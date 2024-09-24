@@ -18,7 +18,7 @@ const Coin = () => {
     };
 
     try {
-      const response = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`, options);
+      const response = await fetch(`/api/coins/${coinId}`, options);
       const data = await response.json();
       setCoinData(data);
     } catch (err) {
@@ -33,7 +33,7 @@ const Coin = () => {
       headers: {accept: 'application/json', 'x-cg-demo-api-key': 'CG-nzBgtXq2gyWNiVZwe6kPkR9f'}
     };
     
-    fetch(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${currency.name}&days=10&interval=daily`, options)
+    fetch(`/api/coins/${coinId}/market_chart?vs_currency=${currency.name}&days=10&interval=daily`, options)
       .then(response => response.json())
       .then(response => setHistoricalData(response))
       .catch(err => console.error(err));
